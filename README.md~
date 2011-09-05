@@ -1,0 +1,13 @@
+# syncsyncgit.sh
+
+using git repository as Dropbox.
+
+just execute:
+
+	while true
+	do 
+		git pull
+		git add .
+		git commit -a -m "$datetime"
+		git push
+	done
