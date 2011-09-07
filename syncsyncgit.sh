@@ -221,7 +221,7 @@ sync(){
         exit 1
     fi
 
-    git pull --ff "$REPOSITORY" "$BRANCH" 2>&1 | grep -v "^Already up-to-date.$"
+    git pull --quiet --ff "$REPOSITORY" "$BRANCH" 2>&1
     git add . 2>&1
     local dry_run=`commit --porcelain 2>&1`
     if [ -n "$dry_run" ]
