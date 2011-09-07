@@ -27,6 +27,8 @@ main(){
 
     cd `dirname $0`
 
+    read_setting_file
+
     PID_FILE=`get_pid_file_name`
     LOG_FILE=`get_log_file_name`
     case $1 in
@@ -37,6 +39,14 @@ main(){
         *) help;;
     esac
 
+}
+
+read_setting_file(){
+    if ! [ -e "$SETTING_FILE" ] 
+    then
+        return 0
+    fi
+    eval "`cat \"$SETTING_FILE\"`"
 }
 
 run(){
@@ -230,7 +240,7 @@ commit(){
 }
 
 help(){
-    echo -n "\
+    echo "\
 $0 {start|stop|sync|log}
   start: start sync
   stop: stop sync
