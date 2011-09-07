@@ -3,8 +3,16 @@
 #  you can use a git repository as Dropbox
 #
 
-# sync interval
+##################### User Settings ########################
+# sync interval [sec]
 INTERVAL=60
+
+# target repository
+REPOSITORY="origin"
+
+# target branch
+BRANCH="master"
+#################### /User Settings ########################
 
 LOG_DIR="$HOME/local/var/log"
 PID_DIR="$HOME/local/var/run"
@@ -187,6 +195,13 @@ check_dir(){
 }
 
 sync(){
+
+    if [ -z $BRANCH ] || [ -z $REPOSITORY ]
+    then
+        echo "error: set $BRANCH and $REPOSITORY" >&2
+        exit 1
+    fi
+
     git pull --ff 2>&1 | grep -v "^Already up-to-date.$"
     git add . 2>&1
     local dry_run=`commit --porcelain 2>&1`
