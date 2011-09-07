@@ -4,6 +4,9 @@
 #
 
 ##################### User Settings ########################
+#  if this script find $SETTING_FILES (see below), 
+# these settings in here will be ignored.
+
 # sync interval [sec]
 INTERVAL=60
 
@@ -14,6 +17,7 @@ REPOSITORY="origin"
 BRANCH="master"
 #################### /User Settings ########################
 
+SETTING_FILE=".syncsyncgit.settings"
 LOG_DIR="$HOME/local/var/log"
 PID_DIR="$HOME/local/var/run"
 
@@ -28,7 +32,7 @@ main(){
     case $1 in
         start) run ;;
         stop) stop ;;
-        sync) sync ;;
+        sync) sync_once ;;
         log) cat_log ;;
         *) help;;
     esac
@@ -109,6 +113,11 @@ stop(){
     create_pid_file $!
 
     delete_pid_file
+}
+
+sync_once(){
+    echo "# sync with $REPOSITORY $BRANCH"
+    sync
 }
 
 cat_log(){
@@ -202,7 +211,7 @@ sync(){
         exit 1
     fi
 
-    git pull --ff 2>&1 | grep -v "^Already up-to-date.$"
+    git pull --ff "$REPOSITORY" "$BRANCH" 2>&1 | grep -v "^Already up-to-date.$"
     git add . 2>&1
     local dry_run=`commit --porcelain 2>&1`
     if [ -n "$dry_run" ]
@@ -210,7 +219,7 @@ sync(){
         echo $dry_run
         commit --quiet
     fi
-    git push --quiet 2>&1 | grep -v "^Everything up-to-date$"
+    git push --quiet "$REPOSITORY" "$BRANCH" 2>&1 | grep -v "^Everything up-to-date$"
 }
 
 commit(){
