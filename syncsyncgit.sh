@@ -53,8 +53,8 @@ run(){
 
     if ! is_git_dir
     then
-        echo "the current dir is not a git ripository" >&2
-        exit 1
+	echo "the current dir is not a git ripository" >&2
+	exit 1
     fi
 
     is_already_started
@@ -67,26 +67,26 @@ run(){
     echo "start sync" | logger
     while true
     do
-        sync | logger
-        if [ $count -gt $GC_INTERVAL ]
-        then
-            git gc 2>&1 | logger
-            echo "git gc" | logger
-            count=0
-        fi
-        sleep $INTERVAL
-        count=$[$count+1]
+	sync | logger
+	if [ $count -gt $GC_INTERVAL ]
+	then
+	    git gc 2>&1 | logger
+	    # echo "git gc" | logger
+	    count=0
+	fi
+	sleep $INTERVAL
+	count=$[$count+1]
     done &
 
     pid=$!
 
     if [ $? -eq 0 ]
     then
-        echo "OK"
-        create_pid_file $pid
+	echo "OK"
+	create_pid_file $pid
     else
-        echo "FALSE"
-        exit 1
+	echo "FALSE"
+	exit 1
     fi
 
 }
@@ -97,26 +97,26 @@ stop(){
 
     if ! exist_pid $pid
     then
-        echo "error: Not started" >&2
-        exit 1
+	echo "error: Not started" >&2
+	exit 1
     fi
 
     echo -n "stop: "
     while [ $retry_count -gt 0 ]
     do
-        kill -2 $pid
-        sleep 0.03
-        if ! exist_pid $pid
-        then
-            break
-        fi
-        local retry_count=$(($retry_count-1))
+	kill -2 $pid
+	sleep 0.03
+	if ! exist_pid $pid
+	then
+	    break
+	fi
+	local retry_count=$(($retry_count-1))
     done
 
     if [ $retry_count -eq 0 ] && (! kill -9 $pid)
     then
-        echo "FALSE"
-        exit 1
+	echo "FALSE"
+	exit 1
     fi
 
     echo "OK"
@@ -158,8 +158,8 @@ is_already_started(){
     local pid=`get_pid`
     if exist_pid $pid
     then
-        echo "error: Already started (pid:$pid)" >&2
-        exit 1
+	echo "error: Already started (pid:$pid)" >&2
+	exit 1
     fi
 }
 
@@ -192,7 +192,7 @@ get_file_name(){
     local suffix=$2
     if ! echo $dir | grep "/$" > /dev/null 2>&1
     then
-        local dir="$dir/"
+	local dir="$dir/"
     fi
     echo "$dir`get_base_file_name`.$suffix"
 }
@@ -207,9 +207,9 @@ check_dir(){
     local dir=`dirname "$file"`
     if ! [ -d "$dir" ]
     then
-        local cmd="mkdir -p \"$dir\""
-        echo $cmd
-        eval $cmd
+	local cmd="mkdir -p \"$dir\""
+	echo $cmd
+	eval $cmd
     fi
 }
 
@@ -226,8 +226,8 @@ sync(){
     local dry_run=`commit --porcelain 2>&1`
     if [ -n "$dry_run" ]
     then
-        echo "$dry_run"
-        commit --quiet
+	echo "$dry_run"
+	commit --quiet
     fi
     git push --quiet "$REPOSITORY" "$BRANCH" 2>&1 | grep -v "^Everything up-to-date$"
 }
