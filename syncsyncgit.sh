@@ -3,9 +3,21 @@
 #  you can use a git repository as Dropbox
 #
 
-# sync interval
+##################### User Settings ########################
+#  if this script find $SETTING_FILES (see below), 
+# these settings in here will be ignored.
+
+# sync interval [sec]
 INTERVAL=60
 
+# target repository
+REPOSITORY="origin"
+
+# target branch
+BRANCH="master"
+#################### /User Settings ########################
+
+SETTING_FILE=".syncsyncgit.settings"
 LOG_DIR="$HOME/local/var/log"
 PID_DIR="$HOME/local/var/run"
 
@@ -15,16 +27,26 @@ main(){
 
     cd `dirname $0`
 
+    read_setting_file
+
     PID_FILE=`get_pid_file_name`
     LOG_FILE=`get_log_file_name`
     case $1 in
-	start) run ;;
-	stop) stop ;;
-	sync) sync ;;
-	log) cat_log ;;
-	*) help;;
+        start) run ;;
+        stop) stop ;;
+        sync) sync_once ;;
+        log) cat_log ;;
+        *) help;;
     esac
 
+}
+
+read_setting_file(){
+    if ! [ -e "$SETTING_FILE" ] 
+    then
+        return 0
+    fi
+    eval "`cat \"$SETTING_FILE\"`"
 }
 
 run(){
@@ -101,6 +123,11 @@ stop(){
     create_pid_file $!
 
     delete_pid_file
+}
+
+sync_once(){
+    echo "# sync with $REPOSITORY $BRANCH"
+    sync
 }
 
 cat_log(){
@@ -187,7 +214,14 @@ check_dir(){
 }
 
 sync(){
-    git pull --ff 2>&1 | grep -v "^Already up-to-date.$"
+
+    if [ -z $BRANCH ] || [ -z $REPOSITORY ]
+    then
+        echo "error: set $BRANCH and $REPOSITORY" >&2
+        exit 1
+    fi
+
+    git pull --quiet --ff "$REPOSITORY" "$BRANCH" 2>&1
     git add . 2>&1
     local dry_run=`commit --porcelain 2>&1`
     if [ -n "$dry_run" ]
@@ -195,7 +229,7 @@ sync(){
 	echo "$dry_run"
 	commit --quiet
     fi
-    git push --quiet 2>&1 | grep -v "^Everything up-to-date$"
+    git push --quiet "$REPOSITORY" "$BRANCH" 2>&1 | grep -v "^Everything up-to-date$"
 }
 
 commit(){
@@ -206,7 +240,7 @@ commit(){
 }
 
 help(){
-    echo -n "\
+    echo "\
 $0 {start|stop|sync|log}
   start: start sync
   stop: stop sync
