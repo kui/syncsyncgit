@@ -248,6 +248,5 @@ $0 {start|stop|sync|log}
   log: show log
 "
 }
-
  
 main "$@"
