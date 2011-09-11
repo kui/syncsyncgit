@@ -71,7 +71,7 @@ run(){
 	if [ $count -gt $GC_INTERVAL ]
 	then
 	    git gc 2>&1 | logger
-	    echo "git gc" | logger
+	    # echo "git gc" | logger
 	    count=0
 	fi
 	sleep $INTERVAL
