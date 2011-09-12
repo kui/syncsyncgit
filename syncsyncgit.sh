@@ -27,7 +27,7 @@ main(){
 
     cd `dirname $0`
 
-    read_setting_file
+    init 
 
     PID_FILE=`get_pid_file_name`
     LOG_FILE=`get_log_file_name`
@@ -39,6 +39,12 @@ main(){
         *) help;;
     esac
 
+}
+
+init(){
+    echo="`which echo`"
+    test -e "$echo"  || echo="echo"
+    read_setting_file
 }
 
 read_setting_file(){
@@ -53,7 +59,7 @@ run(){
 
     if ! is_git_dir
     then
-	echo "the current dir is not a git ripository" >&2
+	$echo "the current dir is not a git ripository" >&2
 	exit 1
     fi
 
@@ -62,9 +68,9 @@ run(){
     count=0
     check_dir "$LOG_FILE"
 
-    echo -n "start: "
+    $echo -n "start: "
 
-    echo "start sync" | logger
+    $echo "start sync" | logger
     while true
     do
 	sync | logger
@@ -83,10 +89,10 @@ run(){
 
     if [ $? -eq 0 ]
     then
-	echo "OK"
+	$echo "OK"
 	create_pid_file $pid
     else
-	echo "FALSE"
+	$echo "FALSE"
 	exit 1
     fi
 
@@ -98,11 +104,11 @@ stop(){
 
     if ! exist_pid $pid
     then
-	echo "error: Not started" >&2
+	$echo "error: Not started" >&2
 	exit 1
     fi
 
-    echo -n "stop: "
+    $echo -n "stop: "
     while [ $retry_count -gt 0 ]
     do
 	kill -2 $pid
@@ -116,18 +122,18 @@ stop(){
 
     if [ $retry_count -eq 0 ] && (! kill -9 $pid)
     then
-	echo "FALSE"
+	$echo "FALSE"
 	exit 1
     fi
 
-    echo "OK"
+    $echo "OK"
     create_pid_file $!
 
     delete_pid_file
 }
 
 sync_once(){
-    echo "# sync with $REPOSITORY $BRANCH"
+    $echo "# sync with $REPOSITORY $BRANCH"
     sync
 }
 
@@ -150,8 +156,8 @@ logger(){
 }
 
 sigint_hook(){
-    echo 
-    echo "exit $0"
+    $echo 
+    $echo "exit $0"
     exit 0
 }
 
@@ -159,7 +165,7 @@ is_already_started(){
     local pid=`get_pid`
     if exist_pid $pid
     then
-	echo "error: Already started (pid:$pid)" >&2
+	$echo "error: Already started (pid:$pid)" >&2
 	exit 1
     fi
 }
@@ -167,7 +173,7 @@ is_already_started(){
 create_pid_file(){
     # local pid_file=`get_pid_file_name`
     check_dir "$PID_FILE"
-    echo "$1"  > "$PID_FILE"
+    $echo "$1"  > "$PID_FILE"
 }
 
 get_pid(){
@@ -191,11 +197,11 @@ get_pid_file_name(){
 get_file_name(){
     local dir=$1
     local suffix=$2
-    if ! echo $dir | grep "/$" > /dev/null 2>&1
+    if ! $echo $dir | grep "/$" > /dev/null 2>&1
     then
 	local dir="$dir/"
     fi
-    echo "$dir`get_base_file_name`.$suffix"
+    $echo "$dir`get_base_file_name`.$suffix"
 }
 
 get_base_file_name(){
@@ -222,7 +228,7 @@ check_dir(){
     if ! [ -d "$dir" ]
     then
 	local cmd="mkdir -p \"$dir\""
-	echo $cmd
+	$echo $cmd
 	eval $cmd
     fi
 }
@@ -231,7 +237,7 @@ sync(){
 
     if [ -z $BRANCH ] || [ -z $REPOSITORY ]
     then
-        echo "error: set $BRANCH and $REPOSITORY" >&2
+        $echo "error: set $BRANCH and $REPOSITORY" >&2
         exit 1
     fi
 
@@ -240,7 +246,7 @@ sync(){
     local dry_run=`commit --porcelain 2>&1`
     if [ -n "$dry_run" ]
     then
-	echo "$dry_run"
+	$echo "$dry_run"
 	commit --quiet
     fi
     git push --quiet "$REPOSITORY" "$BRANCH" 2>&1 | grep -v "^Everything up-to-date$"
@@ -254,7 +260,7 @@ commit(){
 }
 
 help(){
-    echo "\
+    $echo "\
 $0 {start|stop|sync|log}
   start: start sync
   stop: stop sync
