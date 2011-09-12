@@ -241,7 +241,7 @@ sync(){
         exit 1
     fi
 
-    git pull --quiet --ff "$REPOSITORY" "$BRANCH" 2>&1
+    git pull --ff --quiet "$REPOSITORY" "$BRANCH" 2>&1
     git add . 2>&1
     local dry_run=`commit --porcelain 2>&1`
     if [ -n "$dry_run" ]
@@ -254,7 +254,7 @@ sync(){
 
 commit(){
     local options="$@"
-    git commit --all --message "`date +'%F %T'` $0" $options 2>&1 |\
+    git commit $options --all --message "`date +'%F %T'` $0" 2>&1 |\
       grep -v "^# On branch master$" |\
       grep -v "^nothing to commit (working directory clean)$"
 }
