@@ -74,6 +74,7 @@ run(){
 	    # echo "git gc" | logger
 	    count=0
 	fi
+        to_be_or_not_to_be | logger
 	sleep $INTERVAL
 	count=$[$count+1]
     done &
@@ -200,6 +201,19 @@ get_file_name(){
 get_base_file_name(){
     pwd | sed -e 's/[\\.\\/]/_/g' |\
       sed -e 's/$/_syncsyncgit/'
+}
+
+have_tty(){
+    local pid=`get_pid`
+    local tty=`ps h -o tt -p $pid`
+    [ "$tty" != "?" ]
+}
+
+to_be_or_not_to_be(){
+    if ! have_tty
+    then
+        stop
+    fi
 }
 
 check_dir(){
