@@ -217,7 +217,7 @@ get_base_file_name(){
 have_tty(){
     local pid=`get_pid`
     local tty=`ps h -o tt= -p $pid`
-    echo "$tty" | grep '^?' > /dev/null
+    echo "$tty" | grep -v '^?' > /dev/null
 }
 
 to_be_or_not_to_be(){
