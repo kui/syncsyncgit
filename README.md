@@ -21,7 +21,7 @@ done
 	* cannot work on git 1.5
 * OS
 	* Mac OS X 1.6
-	* Debian lenny
+	* Debian lenny (however, the version of apt repository git is 1.5)
 	* CentOS 5.7
 
 ## How to Use
