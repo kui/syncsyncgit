@@ -28,6 +28,8 @@ done
 
 ## How to Use
 
+put syncsyncgit.sh on the directory contains `.git` directory.
+
 ```sh
 $ git clone git@github.com:kui/syncsyncgit.git
 $ git clone <your_repository> <your_git_dir>
