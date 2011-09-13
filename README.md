@@ -34,5 +34,7 @@ $ git clone <your_repository> <your_git_dir>
 $ ln -s ${PWD}/syncsyncgit/syncsyncgit.sh <your_git_dir>/.syncsyncgit.sh
   or
 $ mv ${PWD}/syncsyncgit/syncsyncgit.sh <your_git_dir>/.syncsyncgit.sh
-$ <your_git_dir>/.syncsyncgit.sh start
+$ cd <your_git_dir>
+$ echo ".syncsyncgit.sh" >> .gitignore
+$ ./.syncsyncgit.sh start
 ```
