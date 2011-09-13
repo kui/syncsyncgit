@@ -28,7 +28,10 @@ done
 
 ## How to Use
 
-put syncsyncgit.sh on the directory contains `.git` directory.
+1. put syncsyncgit.sh on the directory contains `.git` directory.
+2. execute `./syncsyncgit.sh start`.
+
+### example
 
 ```sh
 $ git clone git@github.com:kui/syncsyncgit.git
