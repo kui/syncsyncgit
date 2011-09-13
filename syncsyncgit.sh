@@ -34,6 +34,7 @@ main(){
     case $1 in
         start) run ;;
         stop) stop ;;
+        restart) restart ;;
         sync) sync_once ;;
         log) cat_log ;;
         *) help;;
@@ -132,6 +133,10 @@ stop(){
     delete_pid_file
 }
 
+restart(){
+    stop && run
+}
+
 sync_once(){
     $echo "# sync with $REPOSITORY $BRANCH"
     sync
@@ -211,8 +216,8 @@ get_base_file_name(){
 
 have_tty(){
     local pid=`get_pid`
-    local tty=`ps h -o tt -p $pid`
-    [ "$tty" != "?" ]
+    local tty=`ps h -o tt= -p $pid`
+    echo "$tty" | grep '^?' > /dev/null
 }
 
 to_be_or_not_to_be(){
@@ -249,7 +254,8 @@ sync(){
 	$echo "$dry_run"
 	commit --quiet
     fi
-    git push --quiet "$REPOSITORY" "$BRANCH" 2>&1 | grep -v "^Everything up-to-date$"
+    git push --quiet "$REPOSITORY" "$BRANCH" 2>&1 |\
+      grep -v "^Everything up-to-date$"
 }
 
 commit(){
