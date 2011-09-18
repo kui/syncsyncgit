@@ -55,12 +55,7 @@ read_setting_file(){
     PID_FILE=$pid_file
     LOG_FILE=$log_file
     GC_INTERVAL=$gc_interval
-    TARGET_LIST_FILES=()
-    for list_file in "${target_list_files[@]}"
-    do
-        TARGET_FILES=("${TARGET_FILES[@]}" "${list_file[@]}")
-    done
-    echo ${TARGET_FILES[@]}
+    TARGET_LIST_FILES=(${target_list_files[@]})
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
                  GC_INTERVAL
