@@ -41,7 +41,9 @@ read_setting_file(){
         exit 0
     fi
 
-    INTERVAL=$intaval
+    for param in interval default_repository default_branch pid_file log_file gc_interval
+
+    INTERVAL=$interval
     DEFAULT_REPOSITORY=$default_repository
     DEFAULT_BRANCH=$default_branch
     PID_FILE=$pid_file
