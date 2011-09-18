@@ -27,7 +27,7 @@ main(){
 
     cd `dirname $0`
 
-    init 
+    init
 
     PID_FILE=`get_pid_file_name`
     LOG_FILE=`get_log_file_name`
@@ -43,10 +43,13 @@ main(){
 }
 
 init(){
+    set_echo
+    read_setting_file
+}
+
+set_echo(){
     echo="`which echo`"
     test -e "$echo"  || echo="echo"
-
-    read_setting_file
 }
 
 read_setting_file(){
