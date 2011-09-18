@@ -162,7 +162,7 @@ restart(){
 }
 
 sync_once(){
-    $echo "# sync with $REPOSITORY $BRANCH"
+    $echo "# sync"
     sync
 }
 
