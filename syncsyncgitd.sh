@@ -47,7 +47,7 @@ read_setting_file(){
     do
         if ! eval '[ -z $'"$param"' ]'
         then
-            
+            $echo "cannot found '$param'"
         fi
     done
 
