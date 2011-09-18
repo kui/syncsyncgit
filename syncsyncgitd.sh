@@ -42,7 +42,7 @@ read_setting_file(){
         exit 1
     fi
 
-    eval `cat $SETTING_FILE`
+    source $SETTING_FILE
     echo $interval
 
     # checking params
