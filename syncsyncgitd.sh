@@ -41,11 +41,11 @@ read_setting_file(){
     fi
     eval "`cat \"$SETTING_FILE\"`"
     INTERVAL=$intaval
+    DEFAULT_REPOSITORY=$default_repository
+    DEFAULT_BRANCH=$default_branch
     PID_FILE=$pid_file
     LOG_FILE=$log_file
     GC_INTERVAL=$gc_interval
-    DEFAULT_REPOSITORY=$default_repository
-    DEFAULT_BRANCH=$default_branch
 
 }
 
