@@ -58,6 +58,7 @@ read_setting_file(){
     TARGET_LIST_FILES=()
     for file in "${target_list_files[@]}"
     do
+        for file in 
         TARGET_LIST_FILES=("${TARGET_LIST_FILES[@]}" "$file")
     done
     
