@@ -71,7 +71,7 @@ read_setting_file(){
     do
         eval $echo '$param:	$'"$param"
     done
-    echo "TARGET_FILES: ${TARGET_FILES[@]} "
+    echo "TARGET_FILES: ${TARGET_FILES[@]}"
 }
 
 get_file_repo_branch(){
