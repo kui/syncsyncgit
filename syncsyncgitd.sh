@@ -241,7 +241,6 @@ sync_all(){
                 $echo "file:$file, repo:$repo, branch:$branch"
                 unset file repo branch
             fi
-            
         done
     done
 }
