@@ -228,7 +228,11 @@ sync_all(){
     do
         cat "$list_file" | while read line
         do
-            [ $file ] || ( file=file; continue )
+            if [ $file ] 
+            then
+                file=file
+                continue
+            fi
             
         done
     done
