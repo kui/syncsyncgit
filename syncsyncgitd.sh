@@ -72,10 +72,11 @@ read_setting_file(){
     do
         echo "$param: `echo \$$param`"
     done
-    echo "TARGET_FILES: `print_array`"
+    echo "TARGET_FILES: `echo_array`"
 }
 
-print_array(){
+echo_array(){
+    
 }
 
 run(){
