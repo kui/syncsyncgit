@@ -58,7 +58,7 @@ read_setting_file(){
     TARGET_LIST_FILES=()
     for files in "${target_list_files[@]}"
     do
-        
+        echo $files
     done
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
