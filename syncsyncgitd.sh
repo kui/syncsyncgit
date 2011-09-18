@@ -43,6 +43,7 @@ read_setting_file(){
     fi
 
     eval `cat $SETTING_FILE`
+    echo $interval
 
     # checking params
     for param in interval default_repository default_branch\
@@ -73,7 +74,7 @@ read_setting_file(){
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
                  GC_INTERVAL
     do
-        eval $echo "$interval"
+        eval $echo '$param:\t$'"$param"
     done
     echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`" 
 }
