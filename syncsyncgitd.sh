@@ -58,13 +58,12 @@ read_setting_file(){
     TARGET_FILES=()
     for list_file in "${target_list_files[@]}"
     do
-        cat $list_file | while read file_and_repo
+        while read file_and_repo
         do
             file="`get_file_repo_branch $file_and_repo`"
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
             echo ${TARGET_FILES[@]}
-        done # 2> /dev/null
-        echo ${TARGET_FILES[@]}
+        done < $list_file # 2> /dev/null
     done
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
