@@ -229,8 +229,7 @@ sync_all(){
         cat "$list_file" | while read line
         do
             if ! [ $file ]
-            then
-                file=line
+            then file=line
             elif ! [ $repo ]
             then
                 repo=`echo $line | sed -E 's/^[ |\t]+//'`
