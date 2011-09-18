@@ -226,6 +226,12 @@ check_dir(){
     fi
 }
 
+sync_all(){
+
+    
+
+}
+
 sync(){
 
     if [ -z $BRANCH ] || [ -z $REPOSITORY ]
