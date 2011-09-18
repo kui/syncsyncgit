@@ -228,10 +228,13 @@ sync_all(){
     do
         cat "$list_file" | while read line
         do
-            if [ $file ] 
+            if ! [ $file ] 
             then
                 file=file
                 continue
+            elif ! [ $branch ]
+            then
+                branch
             fi            
         done
     done
