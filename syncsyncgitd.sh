@@ -61,7 +61,6 @@ read_setting_file(){
         cat $list_file | while read file_and_repo
         do
             file="`get_file_repo_branch $file_and_repo`"
-            echo $file
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done # 2> /dev/null
     done
@@ -72,7 +71,6 @@ read_setting_file(){
         eval $echo '$param:	$'"$param"
     done
     echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`"
-
 }
 
 get_file_repo_branch(){
