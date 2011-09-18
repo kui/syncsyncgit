@@ -60,7 +60,7 @@ read_setting_file(){
     do
         cat $list_file | while read file_and_repo
         do
-            get_file_repo_branch "$file_and_repo"
+            get_file_repo_branch $file_and_repo
             
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done 2> /dev/null
