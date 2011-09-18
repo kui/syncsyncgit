@@ -231,7 +231,11 @@ sync_all(){
         do
             if echo "$line" | grep "^/" > /dev/null
             then
-                [ -n "$file" ] && $echo "file:$file, repo:$repo, branch:$branch"
+                if [ -n "$file" ] 
+                then
+                    $echo "file:$file, repo:$repo, branch:$branch"
+                    
+                fi
                 unset repo branch
                 file="$line"
             else
