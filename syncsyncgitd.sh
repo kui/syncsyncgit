@@ -61,8 +61,8 @@ read_setting_file(){
         cat $list_file | while read file_and_repo
         do
             echo git_dir:	`echo "$file_and_repo" | cut -f1 -d' '`
-            echo remote_repo:	`echo "$file_and_repo" | cut -f1 -d' '`
-            echo branch:	`echo "$file_and_repo" | cut -f1 -d' '`
+            echo remote_repo:	`echo "$file_and_repo" | cut -f2 -d' '`
+            echo branch:	`echo "$file_and_repo" | cut -f3 -d' '`
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done 2> /dev/null
     done
