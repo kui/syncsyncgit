@@ -226,7 +226,7 @@ check_dir(){
 sync_all(){
     for file in ${TARGET_LIST_FILES[@]}
     do
-        echo $file
+        sync $file
     done
 }
 
