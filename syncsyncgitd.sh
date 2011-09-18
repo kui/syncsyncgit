@@ -59,9 +59,9 @@ read_setting_file(){
     for list_file in "${target_list_files[@]}"
     do
         
-        list_file=`cat $list_file | sed -E 's/ +/	/g'`
+        list_file=`cat $list_file | `
         
- | while read file_and_repo
+
         do
             file="`get_file_repo_branch $file_and_repo`"
             echo $file
