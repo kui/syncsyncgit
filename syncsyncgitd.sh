@@ -75,8 +75,8 @@ read_setting_file(){
 
 get_file_repo_branch(){
     if [ $1 ] ;then echo $1; else return 1; fi
-    if [ $1 ] ;then echo $1; else return 1; fi
-    if [ $1 ] ;then echo $1; else return 1; fi
+    if [ $2 ] ;then echo $2; else echo $DEFAULT_REPOSITORY; fi
+    if [ $3 ] ;then echo $3; else echo $DEFAULT_BRANCH; fi
 }
 
 echo_array(){
