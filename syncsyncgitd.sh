@@ -233,19 +233,19 @@ sync_all(){
             then
                 if [ -n "$file" ] 
                 then
-                    repo=$DEFAULT_REPOSITORY
-                    branch=$DEFAULT_REPOSITORY
+                    local repo=$DEFAULT_REPOSITORY
+                    local branch=$DEFAULT_REPOSITORY
                     $echo "file:$file, repo:$repo, branch:$branch"
                 fi
                 unset repo branch
-                file="$line"
+                local file="$line"
             else
                 if ! [ $repo ]
                 then
-                    repo=`echo $line | sed -E 's/^[ |\t]+//'`
+                    local repo=`echo $line | sed -E 's/^[ |\t]+//'`
                 elif ! [ $branch ]
                 then
-                    branch=`echo $line | sed -E 's/^[ |\t]+//'`
+                    local branch=`echo $line | sed -E 's/^[ |\t]+//'`
                 fi
             fi
         done < "$list_file"
