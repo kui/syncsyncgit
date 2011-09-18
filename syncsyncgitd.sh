@@ -232,8 +232,7 @@ sync_all(){
             then
                 file=file
                 continue
-            fi
-            
+            fi            
         done
     done
 }
