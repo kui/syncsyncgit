@@ -62,7 +62,7 @@ read_setting_file(){
     do
         eval $echo '$param:	$'"$param"
     done
-    echo "TARGET_FILES: ${TARGET_FILES[@]}"
+    echo "TARGET_LIST_FILES: ${TARGET_FILES[@]}"
 }
 
 echo_array(){
