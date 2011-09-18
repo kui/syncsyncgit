@@ -60,7 +60,7 @@ read_setting_file(){
     do
         
         list_file=`cat $list_file | sed -E 's/ +/	/g'`
-
+        
  | while read file_and_repo
         do
             file="`get_file_repo_branch $file_and_repo`"
