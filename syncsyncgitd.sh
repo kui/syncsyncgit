@@ -75,6 +75,9 @@ read_setting_file(){
     echo "TARGET_FILES: `print_array`"
 }
 
+print_array(){
+}
+
 run(){
 
     if ! is_git_dir
