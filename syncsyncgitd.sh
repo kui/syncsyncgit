@@ -35,11 +35,11 @@ set_echo(){
 }
 
 read_setting_file(){
-    if ! [ -e "$SETTING_FILE" ] 
+
+    if source "$SETTING_FILE"
     then
-        return 0
+        exit 0
     fi
-    source "$SETTING_FILE"
     INTERVAL=$intaval
     DEFAULT_REPOSITORY=$default_repository
     DEFAULT_BRANCH=$default_branch
