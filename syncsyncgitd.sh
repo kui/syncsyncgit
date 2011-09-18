@@ -226,9 +226,9 @@ check_dir(){
 sync_all(){
     for list_file in ${TARGET_LIST_FILES[@]}
     do
-        cat $list_file | while read file
+        cat "$list_file" | while read file
         do
-
+            
         done
     done
 }
