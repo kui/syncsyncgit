@@ -61,6 +61,7 @@ read_setting_file(){
         for file_and_repo in `cat $list_file|sed -e 's/ +/\\\ /g'`
         do
             file="`get_file_repo_branch $file_and_repo`"
+            echo $file
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done # 2> /dev/null
     done
