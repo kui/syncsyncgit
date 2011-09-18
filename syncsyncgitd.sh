@@ -58,6 +58,7 @@ read_setting_file(){
         return 0
     fi
     eval "`cat \"$SETTING_FILE\"`"
+    INTERVAL=$intaval
 }
 
 run(){
