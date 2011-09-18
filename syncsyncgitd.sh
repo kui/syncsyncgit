@@ -73,7 +73,7 @@ read_setting_file(){
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
                  GC_INTERVAL
     do
-        echo "hoge"
+        $echo "$param: "
     done
     echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`" 
 }
