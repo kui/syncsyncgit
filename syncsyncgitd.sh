@@ -43,7 +43,7 @@ read_setting_file(){
 
     # checking params
     for param in interval default_repository default_branch\
-                 pid_file log_file gc_interval
+                 pid_file log_file gc_interval target_list_files
     do
         if ! eval '[ -z $'"$param"' ]'
         then
