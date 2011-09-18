@@ -70,17 +70,17 @@ read_setting_file(){
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
                  GC_INTERVAL
     do
-        echo "$param: `echo \$$param`"
+        $echo "$param: `echo \$$param`"
     done
-    echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`"
+    $echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`"
 }
 
 echo_array(){
     for el in "$@"
     do
-        echo -n "$el, "
+        $echo -n "$el, "
     done
-    echo 
+    $echo 
 }
 
 run(){
