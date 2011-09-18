@@ -58,7 +58,8 @@ read_setting_file(){
     PID_FILE=$pid_file
     LOG_FILE=$log_file
     GC_INTERVAL=$gc_interval
-    TARGET_FILES=()
+    
+    for list_file in ${target_list_files[@]}
 }
 
 run(){
