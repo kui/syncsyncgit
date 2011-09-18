@@ -228,7 +228,7 @@ sync_all(){
     echo ${#TARGET_LIST_FILES[@]}
     while [ ${#TARGET_LIST_FILES[@]} -gt $i ]
     do
-        ls ${TARGET_LIST_FILES[$i]}|while read file
+        ls ${TARGET_LIST_FILES[$i]} | while read file
         do
             echo $file
         done
