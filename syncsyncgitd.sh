@@ -229,8 +229,7 @@ sync_all(){
         unset file
         while read line
         do
-
-            if echo "$line" | grep "^/"
+            if echo "$line" | grep "^/" > /dev/null
             then
                 if ! [ $repo ]
                 then
