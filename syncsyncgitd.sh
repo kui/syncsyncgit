@@ -61,6 +61,9 @@ read_setting_file(){
     
     for list_file in "${target_list_files[@]}"
     do
+        for file in `cat "$list_file"`
+        do
+        done
     done
 }
 
