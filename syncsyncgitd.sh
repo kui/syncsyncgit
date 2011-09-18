@@ -228,7 +228,10 @@ check_dir(){
 
 sync_all(){
 
-    for target in $TARGET_FILES
+    for target in "${TARGET_FILES[@]}"
+    do
+
+    done
 
 }
 
