@@ -63,7 +63,7 @@ read_setting_file(){
     do
         for file in `cat "$list_file"`
         do
-            
+            TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done
     done
 }
