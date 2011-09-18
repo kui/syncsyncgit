@@ -231,8 +231,10 @@ sync_all(){
             if ! [ $file ]
             then
                 file=line
+                continue
             fi
 
+            if grep line
             $echo "file:$file, repo:$repo, branch:$branch"
             unset file repo branch
 
