@@ -66,6 +66,9 @@ read_setting_file(){
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done
     done
+    
+    for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
+                 GC_INTERVAL
 }
 
 run(){
