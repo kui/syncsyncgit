@@ -227,6 +227,7 @@ sync_all(){
     for list_file in ${TARGET_LIST_FILES[@]}
     do
         unset file
+        cat "$list_file"
         while read line
         do
             if [ -z "$file" ]
