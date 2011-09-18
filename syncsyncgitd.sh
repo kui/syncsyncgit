@@ -3,20 +3,6 @@
 #  using a git repository as Dropbox
 #
 
-##################### User Settings ########################
-#  if this script find $SETTING_FILES (see below), 
-# these settings in here will be ignored.
-
-# sync interval [sec]
-INTERVAL=60
-
-# target repository
-REPOSITORY="origin"
-
-# target branch
-BRANCH="master"
-#################### /User Settings ########################
-
 SETTING_FILE="etc/syncsyncgit/syncsyncgit.config"
 LOG_DIR="$HOME/local/var/log"
 PID_DIR="$HOME/local/var/run"
