@@ -230,7 +230,7 @@ sync_all(){
 
     for target in "${TARGET_FILES[@]}"
     do
-
+        sync target
     done
 
 }
