@@ -228,14 +228,14 @@ sync_all(){
     do
         cat "$list_file" | while read line
         do
-            if ! [ $file ] 
+            if ! [ $file ]
             then
                 file=line
-                continue
             elif ! [ $repo ]
             then
                 repo=`echo $line | sed -E 's/^[ |\t]+//'`
             elif ! [ $branch ] 
+            then
                 branch=`echo $line | sed -E 's/^[ |\t]+//'`
             fi            
         done
