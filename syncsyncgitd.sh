@@ -73,6 +73,7 @@ read_setting_file(){
         $echo "$param: `echo \$$param`"
     done
     $echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`"
+
 }
 
 echo_array(){
@@ -80,7 +81,7 @@ echo_array(){
     do
         $echo -n "$el, "
     done
-    $echo 
+    $echo
 }
 
 run(){
