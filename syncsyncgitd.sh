@@ -231,11 +231,9 @@ sync_all(){
             if ! [ $file ]
             then file=line
             elif ! [ $repo ]
-            then
-                repo=`echo $line | sed -E 's/^[ |\t]+//'`
+            then repo=`echo $line | sed -E 's/^[ |\t]+//'`
             elif ! [ $branch ] 
-            then
-                branch=`echo $line | sed -E 's/^[ |\t]+//'`
+            then branch=`echo $line | sed -E 's/^[ |\t]+//'`
             fi            
         done
     done
