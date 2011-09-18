@@ -229,7 +229,7 @@ sync_all(){
         cat "$list_file" | while read line
         do
             echo $line
-            if ! [ -z "$file" ]
+            if [ -z "$file" ]
             then
                 file="$line"
                 continue
