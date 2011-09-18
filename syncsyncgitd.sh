@@ -229,7 +229,7 @@ sync_all(){
         unset file
         while read line
         do
-            echo "$line"
+            echo ""$line""
             if [ -z "$file" ]
             then
                 file="$line"
