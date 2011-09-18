@@ -36,7 +36,7 @@ set_echo(){
 
 read_setting_file(){
 
-    if ! 
+    if ! [ -e $SETTING_FILE ]
     then
         exit 1
     fi
