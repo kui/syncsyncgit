@@ -59,7 +59,9 @@ read_setting_file(){
     LOG_FILE=$log_file
     GC_INTERVAL=$gc_interval
     
-    for list_file in ${target_list_files[@]}
+    for list_file in "${target_list_files[@]}"
+    do
+    done
 }
 
 run(){
