@@ -195,11 +195,6 @@ delete_pid_file(){
     rm "$PID_FILE"
 }
 
-get_base_file_name(){
-    pwd | sed -e 's/[\\.\\/]/_/g' |\
-      sed -e 's/$/_syncsyncgit/'
-}
-
 check_dir(){
     local file=$1
     local dir=`dirname "$file"`
