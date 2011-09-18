@@ -76,6 +76,9 @@ read_setting_file(){
 
 }
 
+split_file_repo_branch(){
+}
+
 echo_array(){
     for el in "$@"
     do
