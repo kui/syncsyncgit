@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#  you can use a git repository as Dropbox
+#  using a git repository as Dropbox
 #
 
 ##################### User Settings ########################
