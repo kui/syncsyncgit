@@ -78,7 +78,7 @@ read_setting_file(){
 echo_array(){
     for el in "$@"
     do
-        echo -n $el,
+        echo -n "$el, "
     done
 }
 
