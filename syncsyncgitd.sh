@@ -228,7 +228,7 @@ check_dir(){
 
 sync_all(){
 
-    
+    for target in $TARGET_FILES
 
 }
 
