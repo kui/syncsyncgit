@@ -55,12 +55,10 @@ read_setting_file(){
     PID_FILE=$pid_file
     LOG_FILE=$log_file
     GC_INTERVAL=$gc_interval
-    TARGET_FILES=()
+    TARGET_FILE_LIST=()
     for list_file in "${target_list_files[@]}"
     do
-        list_file=`cat $list_file | grep -v '^  '`
         TARGET_FILES=("${TARGET_FILES[@]}" "${list_file[@]}")
-        
     done
     echo ${TARGET_FILES[@]}
     
@@ -70,12 +68,6 @@ read_setting_file(){
         eval $echo '$param:	$'"$param"
     done
     echo "TARGET_FILES: ${TARGET_FILES[@]}"
-}
-
-get_file_repo_branch(){
-    if [ $1 ] ;then $echo $1; else return 1; fi
-    if [ $2 ] ;then $echo $2; else $echo $DEFAULT_REPOSITORY; fi
-    if [ $3 ] ;then $echo $3; else $echo $DEFAULT_BRANCH; fi
 }
 
 echo_array(){
