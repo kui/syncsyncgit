@@ -38,6 +38,7 @@ read_setting_file(){
 
     if ! [ -e $SETTING_FILE ]
     then
+        source $SETTING_FILE
         exit 1
     fi
 
