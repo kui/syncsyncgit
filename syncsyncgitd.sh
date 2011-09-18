@@ -36,14 +36,7 @@ set_echo(){
 
 read_setting_file(){
 
-    if ! [ -e $SETTING_FILE ]
-    then
-        source $SETTING_FILE
-        exit 1
-    fi
-
-    source $SETTING_FILE
-    echo $interval
+    source $SETTING_FILE || exit 1
 
     # checking params
     for param in interval default_repository default_branch\
