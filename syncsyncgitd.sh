@@ -71,11 +71,10 @@ read_setting_file(){
         eval $echo '$param:	$'"$param"
     done
     echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`"
-
 }
 
 get_file_repo_branch(){
-    echo $1
+    if [ $1 ] ;then echo $1; else return 1
     echo $2
     echo $3
 }
