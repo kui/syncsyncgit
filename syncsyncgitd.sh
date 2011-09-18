@@ -232,9 +232,11 @@ sync_all(){
             then
                 file=line
                 continue
-            elif ! [ $branch ]
+            elif ! [ $repo ]
             then
-                branch=`echo $line | sed -e 's/^ +//'`
+                repo=`echo $line | sed -E 's/^[ |\t]+//'`
+            elif ! [ $branch ] 
+                branch=`echo $line | sed -E 's/^[ |\t]+//'`
             fi            
         done
     done
