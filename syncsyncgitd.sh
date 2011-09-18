@@ -227,7 +227,7 @@ sync_all(){
     for list_file in ${TARGET_LIST_FILES[@]}
     do
         unset file
-        cat "$list_file" | while read line
+        while read line
         do
             echo "$line"
             if [ -z "$file" ]
@@ -251,7 +251,7 @@ sync_all(){
                 file="$line"
             fi
 
-        done
+        done < "$list_file"
     done
 }
 
