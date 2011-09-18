@@ -80,6 +80,7 @@ echo_array(){
     do
         echo -n "$el, "
     done
+    echo 
 }
 
 run(){
