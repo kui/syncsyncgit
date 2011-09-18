@@ -42,6 +42,7 @@ read_setting_file(){
         exit 1
     fi
 
+    cat $SETTING_FILE
     eval `cat $SETTING_FILE`
     echo $interval
 
