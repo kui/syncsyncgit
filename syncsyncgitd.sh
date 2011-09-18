@@ -223,11 +223,10 @@ check_dir(){
 }
 
 sync_all(){
-    local i=1
+    local i=0
     echo ${#TARGET_LIST_FILES[@]}
-    while [ ${#TARGET_LIST_FILES[@]} -ge $i ]
+    while [ ${#TARGET_LIST_FILES[@]} -gt $i ]
     do
-        echo $i
         echo "${TARGET_LIST_FILES[$i]}"
         local i=$(($i+1))
     done
