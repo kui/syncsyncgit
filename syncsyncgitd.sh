@@ -74,9 +74,9 @@ read_setting_file(){
 }
 
 get_file_repo_branch(){
-    if [ $1 ] ;then echo $1; else return 1
-    echo $2
-    echo $3
+    if [ $1 ] ;then echo $1; else return 1; fi
+    if [ $1 ] ;then echo $1; else return 1; fi
+    if [ $1 ] ;then echo $1; else return 1; fi
 }
 
 echo_array(){
