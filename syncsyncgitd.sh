@@ -224,7 +224,7 @@ check_dir(){
 
 sync_all(){
     local i=1
-    while [ ${#TARGET_LIST_FILES} -lt $i]
+    while [ ${#TARGET_LIST_FILES} -ge $i]
     do
         echo $target
     done
