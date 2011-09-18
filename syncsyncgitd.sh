@@ -17,7 +17,7 @@ REPOSITORY="origin"
 BRANCH="master"
 #################### /User Settings ########################
 
-SETTING_FILE="etc/syncsyncgit.config"
+SETTING_FILE="etc/syncsyncgit/syncsyncgit.config"
 LOG_DIR="$HOME/local/var/log"
 PID_DIR="$HOME/local/var/run"
 
