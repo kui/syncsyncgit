@@ -71,7 +71,7 @@ read_setting_file(){
     done
     echo "TARGET_FILES: `echo_array "${TARGET_FILES[@]}"`" 
 }
-
+#"
 echo_array(){
     for el in "$@"
     do
