@@ -1,5 +1,0 @@
-# -*- coding:utf-8; mode: sh -*-
-
-INTERVAL=10
-REPOSITORY="origin"
-BRANCH="master"
