@@ -224,15 +224,10 @@ check_dir(){
 }
 
 sync_all(){
-    local i=0
     echo ${#TARGET_LIST_FILES[@]}
-    while [ ${#TARGET_LIST_FILES[@]} -gt $i ]
+    for file in ${#TARGET_LIST_FILES[@]}
     do
-        ls ${TARGET_LIST_FILES[$i]} | while read file
-        do
-            echo $file
-        done
-        local i=$(($i+1))
+        echo $file
     done
 
 }
