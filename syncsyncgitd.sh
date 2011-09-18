@@ -230,11 +230,11 @@ sync_all(){
         do
             if ! [ $file ] 
             then
-                file=file
+                file=line
                 continue
             elif ! [ $branch ]
             then
-                branch
+                branch=line
             fi            
         done
     done
