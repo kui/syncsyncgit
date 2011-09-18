@@ -60,7 +60,7 @@ read_setting_file(){
     do
         for file_and_repo in `cat $list_file`
         do
-            local file=`echo "$file_and_repo" | cut -f1 -d' '`
+            echo "$file_and_repo" | cut -f1 -d' '
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done 2> /dev/null
     done
