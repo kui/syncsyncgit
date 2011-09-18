@@ -58,9 +58,12 @@ read_setting_file(){
     TARGET_FILES=()
     for list_file in "${target_list_files[@]}"
     do
-        for file in `cat $list_file`
+        for wildcard_file in `cat $list_file`
         do
-            TARGET_FILES=("${TARGET_FILES[@]}" "$file")
+            for file in $wildcard_file
+            do
+                TARGET_FILES=("${TARGET_FILES[@]}" "$file")
+            done
         done
     done
     
