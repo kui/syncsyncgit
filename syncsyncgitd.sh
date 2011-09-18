@@ -62,7 +62,7 @@ read_setting_file(){
         do
             file="`get_file_repo_branch $file_and_repo`"
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
-        done 2> /dev/null
+        done # 2> /dev/null
     done
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
