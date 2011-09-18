@@ -59,12 +59,14 @@ read_setting_file(){
     for list_file in "${target_list_files[@]}"
     do
         
-        `cat $list_file | while read file_and_repo
+        cat $list_file | sed -E 's/ +/	/g'
+
+ | while read file_and_repo
         do
             file="`get_file_repo_branch $file_and_repo`"
             echo $file
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
-        done`
+        done
     done
     echo ${TARGET_FILES[@]}
     
