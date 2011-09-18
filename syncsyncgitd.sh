@@ -60,10 +60,7 @@ read_setting_file(){
     do
         for wildcard_file in `cat $list_file`
         do
-            for file in $wildcard_file
-            do
-                TARGET_FILES=("${TARGET_FILES[@]}" "$file")
-            done 2> /dev/null
+            TARGET_FILES=("${TARGET_FILES[@]}" "$file")
         done 2> /dev/null
     done
     
