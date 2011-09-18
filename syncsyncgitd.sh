@@ -63,7 +63,7 @@ read_setting_file(){
             for file in $wildcard_file
             do
                 TARGET_FILES=("${TARGET_FILES[@]}" "$file")
-            done
+            done 2> /dev/null
         done
     done
     
