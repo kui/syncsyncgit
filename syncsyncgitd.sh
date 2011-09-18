@@ -38,7 +38,6 @@ read_setting_file(){
 
     if ! source "$SETTING_FILE"
     then
-        $echo "cannot found '$param' parameter" >&2
         exit 1
     fi
 
