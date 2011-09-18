@@ -228,7 +228,7 @@ sync_all(){
     do
         cat "$list_file" | while read line
         do
-            if ! [ "$file" ]
+            if ! [ -z "$file" ]
             then
                 file="$line"
                 continue
