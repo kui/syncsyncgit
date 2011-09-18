@@ -224,9 +224,12 @@ check_dir(){
 }
 
 sync_all(){
-    for file in ${TARGET_LIST_FILES[@]}
+    for list_file in ${TARGET_LIST_FILES[@]}
     do
-        sync $file
+        grep -v '  ' $list_file | while read file
+        do
+            echo $file $list_file
+        done
     done
 }
 
