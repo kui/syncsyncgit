@@ -60,7 +60,6 @@ read_setting_file(){
     do
         TARGET_LIST_FILES=("${TARGET_LIST_FILES[@]}" "$file")
     done
-    echo ${#TARGET_LIST_FILES}
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
                  GC_INTERVAL
@@ -226,7 +225,7 @@ check_dir(){
 sync_all(){
     local i=1
     echo ${#TARGET_LIST_FILES}
-    while [ ${#TARGET_LIST_FILES} -ge $i ]
+    while [ ${TARGET_LIST_FILES[#]} -ge $i ]
     do
         echo ${TARGET_LIST_FILES[$i]}
         local i=$(($i+1))
