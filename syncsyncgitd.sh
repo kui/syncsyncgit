@@ -230,21 +230,25 @@ sync_all(){
         do
             if ! [ $file ]
             then
-                file=line
+                file="$line"
                 continue
             fi
 
             if echo "$line" | grep "^  "
-            $echo "file:$file, repo:$repo, branch:$branch"
-            unset file repo branch
-
-            elif ! [ $repo ]
             then
-                repo=`echo $line | sed -E 's/^[ |\t]+//'`
-            elif ! [ $branch ]
-            then
-                branch=`echo $line | sed -E 's/^[ |\t]+//'`
+                if ! [ $repo ]
+                then
+                    repo=`echo $line | sed -E 's/^[ |\t]+//'`
+                elif ! [ $branch ]
+                then
+                    branch=`echo $line | sed -E 's/^[ |\t]+//'`
+                fi
+            else
+                $echo "file:$file, repo:$repo, branch:$branch"
+                unset repo branch
+                file="$line"
             fi
+
         done
     done
 }
