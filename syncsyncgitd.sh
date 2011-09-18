@@ -228,7 +228,7 @@ sync_all(){
     do
         grep -v '  ' $list_file | while read file
         do
-            echo $file $list_file
+            echo "$file" "$list_file"
         done
     done
 }
