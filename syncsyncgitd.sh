@@ -99,7 +99,7 @@ run(){
     $echo "start sync" | logger
     while true
     do
-	sync | logger
+	sync_all | logger
 	if [ $count -gt $GC_INTERVAL ]
 	then
 	    git gc 2>&1 | logger
