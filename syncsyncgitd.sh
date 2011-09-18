@@ -45,9 +45,10 @@ read_setting_file(){
     for param in interval default_repository default_branch\
                  pid_file log_file gc_interval
     do
-        if eval '[ -z $'"$param"' ]'
+        if ! eval '[ -z $'"$param"' ]'
         then
-
+            
+        fi
     done
 
     INTERVAL=$interval
