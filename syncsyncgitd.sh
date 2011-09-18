@@ -45,6 +45,7 @@ main(){
 init(){
     echo="`which echo`"
     test -e "$echo"  || echo="echo"
+
     read_setting_file
 }
 
