@@ -226,9 +226,9 @@ check_dir(){
 sync_all(){
     for list_file in ${TARGET_LIST_FILES[@]}
     do
-        grep -v '  ' $list_file | while read file
+        grep -v '  ' "$list_file" | while read file
         do
-            echo "$file" "$list_file"
+            grep "$file" "$list_file"
         done
     done
 }
