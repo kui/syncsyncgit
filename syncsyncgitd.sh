@@ -229,7 +229,7 @@ sync_all(){
 
     for target in "${TARGET_LIST_FILES[@]}"
     do
-        sync target
+        $echo target
     done
 
 }
