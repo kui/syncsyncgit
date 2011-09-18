@@ -61,7 +61,7 @@ read_setting_file(){
         for wildcard_file in `cat $list_file`
         do
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
-        done 
+        done 2> /dev/null
     done
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
