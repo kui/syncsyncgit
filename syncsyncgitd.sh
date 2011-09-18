@@ -38,7 +38,8 @@ read_setting_file(){
 
     if ! source "$SETTING_FILE"
     then
-        exit 0
+        $echo "cannot found '$param' parameter" >&2
+        exit 1
     fi
 
     # checking params
@@ -47,7 +48,7 @@ read_setting_file(){
     do
         if ! eval '[ -z $'"$param"' ]'
         then
-            $echo "cannot found '$param' parameter"
+            $echo "cannot found '$param' parameter" >&2
             exit 1
         fi
     done
