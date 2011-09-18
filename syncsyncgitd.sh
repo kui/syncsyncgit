@@ -233,8 +233,9 @@ sync_all(){
             then
                 if [ -n "$file" ] 
                 then
+                    repo=$DEFAULT_REPOSITORY
+                    branch=$DEFAULT_REPOSITORY
                     $echo "file:$file, repo:$repo, branch:$branch"
-                    
                 fi
                 unset repo branch
                 file="$line"
