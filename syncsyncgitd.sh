@@ -39,7 +39,7 @@ read_setting_file(){
     then
         return 0
     fi
-    eval "`cat \"$SETTING_FILE\"`"
+    source "$SETTING_FILE"
     INTERVAL=$intaval
     DEFAULT_REPOSITORY=$default_repository
     DEFAULT_BRANCH=$default_branch
