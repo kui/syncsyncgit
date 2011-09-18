@@ -60,11 +60,7 @@ read_setting_file(){
     do
         
         list_file=`cat $list_file | grep -v '^  '`
-        do
-            file="`get_file_repo_branch $file_and_repo`"
-            echo $file
-            TARGET_FILES=("${TARGET_FILES[@]}" "$file")
-        done
+        TARGET_FILES=("${TARGET_FILES[@]}" "$file")
     done
     echo ${TARGET_FILES[@]}
     
