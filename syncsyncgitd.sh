@@ -58,10 +58,7 @@ read_setting_file(){
     TARGET_LIST_FILES=()
     for file in "${target_list_files[@]}"
     do
-        for foo in "$file"
-        do
-            TARGET_LIST_FILES=("${TARGET_LIST_FILES[@]}" "$foo")
-        done
+        TARGET_LIST_FILES=("${TARGET_LIST_FILES[@]}" "$file")
     done
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
@@ -69,7 +66,7 @@ read_setting_file(){
     do
         eval $echo '$param:	$'"$param"
     done
-    echo "TARGET_LIST_FILES: ${TARGET_LIST_FILES[@]}"
+    $echo "TARGET_LIST_FILES: ${TARGET_LIST_FILES[@]}"
 }
 
 echo_array(){
