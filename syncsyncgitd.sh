@@ -65,6 +65,7 @@ read_setting_file(){
             echo ${TARGET_FILES[@]}
         done # 2> /dev/null
     done
+    echo ${TARGET_FILES[@]}
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
                  GC_INTERVAL
