@@ -231,6 +231,10 @@ sync_all(){
         do
             if echo "$line" | grep "^/" > /dev/null
             then
+                [ -n "$file" ] && $echo "file:$file, repo:$repo, branch:$branch"
+                unset repo branch
+                file="$line"
+            else
                 if ! [ $repo ]
                 then
                     repo=`echo $line | sed -E 's/^[ |\t]+//'`
@@ -238,12 +242,7 @@ sync_all(){
                 then
                     branch=`echo $line | sed -E 's/^[ |\t]+//'`
                 fi
-            else
-                [ -n "$file" ] && $echo "file:$file, repo:$repo, branch:$branch"
-                unset repo branch
-                file="$line"
             fi
-
         done < "$list_file"
     done
 }
