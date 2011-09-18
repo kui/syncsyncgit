@@ -244,6 +244,7 @@ sync_all(){
                 fi
             fi
         done < "$list_file"
+        [ -n "$file" ] && $echo "file:$file, repo:$repo, branch:$branch"        
     done
 }
 
