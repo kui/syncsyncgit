@@ -62,7 +62,7 @@ read_setting_file(){
         do
             file="`get_file_repo_branch $file_and_repo`"
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
-            echo $TARGET_FILES
+            echo $TARGET_FILES[@]
         done # 2> /dev/null
     done
     
