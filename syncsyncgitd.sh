@@ -224,12 +224,11 @@ check_dir(){
 }
 
 sync_all(){
-    echo ${#TARGET_LIST_FILES[@]}
-    for file in ${#TARGET_LIST_FILES[@]}
+    echo ${TARGET_LIST_FILES[@]}
+    for file in ${TARGET_LIST_FILES[@]}
     do
         echo $file
     done
-
 }
 
 sync(){
