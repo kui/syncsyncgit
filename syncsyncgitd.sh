@@ -163,7 +163,7 @@ restart(){
 
 sync_once(){
     $echo "# sync"
-    sync
+    sync_all
 }
 
 cat_log(){
