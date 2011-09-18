@@ -59,7 +59,7 @@ read_setting_file(){
     for list_file in "${target_list_files[@]}"
     do
         list_file=`cat $list_file | grep -v '^  '`
-        TARGET_FILES=("${TARGET_FILES[@]}" "$file")
+        TARGET_FILES=("${TARGET_FILES[@]}" "${list_file[@]}")
     done
     echo ${TARGET_FILES[@]}
     
