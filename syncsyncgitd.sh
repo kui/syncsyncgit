@@ -76,7 +76,7 @@ read_setting_file(){
 }
 
 echo_array(){
-    
+    param_name=$1
 }
 
 run(){
