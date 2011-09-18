@@ -234,7 +234,7 @@ sync_all(){
                 continue
             elif ! [ $branch ]
             then
-                branch=line
+                branch=`echo $line | sed -e 's/^ +//'`
             fi            
         done
     done
