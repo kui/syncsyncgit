@@ -236,7 +236,7 @@ sync_all(){
                 continue
             fi
 
-            if echo "$line" | grep "^  "
+            if echo "$line" | grep "^/"
             then
                 if ! [ $repo ]
                 then
