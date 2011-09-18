@@ -43,8 +43,7 @@ read_setting_file(){
     INTERVAL=$intaval
     PID_FILE=$pid_file
     LOG_FILE=$log_file
-
-    GC_INTERVAL=20
+    GC_INTERVAL=$gc_interval
 
 }
 
