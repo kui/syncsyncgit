@@ -36,10 +36,12 @@ set_echo(){
 
 read_setting_file(){
 
-    if ! eval `cat $SETTING_FILE`
+    if ! 
     then
         exit 1
     fi
+
+    eval `cat $SETTING_FILE`
 
     # checking params
     for param in interval default_repository default_branch\
