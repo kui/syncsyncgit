@@ -227,6 +227,7 @@ sync_all(){
     while [ ${#TARGET_LIST_FILES} -ge $i ]
     do
         echo ${TARGET_LIST_FILES[$i]}
+        local i=$(($i+1))
     done
 
 }
