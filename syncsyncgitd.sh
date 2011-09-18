@@ -64,7 +64,6 @@ read_setting_file(){
             TARGET_FILES=("${TARGET_FILES[@]}" "$file")
             echo ${TARGET_FILES[@]}
         done # 2> /dev/null
-        cat $list_file
     done
     
     for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
