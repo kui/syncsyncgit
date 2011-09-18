@@ -73,14 +73,6 @@ read_setting_file(){
 
 }
 
-echo_array(){
-    for el in "$@"
-    do
-        $echo -n "$el, "
-    done
-    $echo
-}
-
 run(){
 
     if ! is_git_dir
