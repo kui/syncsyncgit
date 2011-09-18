@@ -238,8 +238,8 @@ sync_all(){
             then
                 branch=`echo $line | sed -E 's/^[ |\t]+//'`
             else
-                echo "file:$file, repo:$repo, branch:$branch"
-                
+                $echo "file:$file, repo:$repo, branch:$branch"
+                unset file repo branch
             fi
             
         done
