@@ -237,7 +237,7 @@ sync_all(){
 
 sync(){
 
-    local target=$1
+    cd $1
 
     if [ -z $BRANCH ] || [ -z $REPOSITORY ]
     then
