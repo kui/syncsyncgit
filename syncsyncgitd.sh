@@ -4,10 +4,6 @@
 #
 
 SETTING_FILE="etc/syncsyncgit/syncsyncgit.config"
-LOG_DIR="$HOME/local/var/log"
-PID_DIR="$HOME/local/var/run"
-
-GC_INTERVAL=20
 
 main(){
 
@@ -15,8 +11,8 @@ main(){
 
     init
 
-    PID_FILE=`get_pid_file_name`
-    LOG_FILE=`get_log_file_name`
+    #PID_FILE=`get_pid_file_name`
+    #LOG_FILE=`get_log_file_name`
     case $1 in
         start) run ;;
         stop) stop ;;
@@ -45,6 +41,11 @@ read_setting_file(){
     fi
     eval "`cat \"$SETTING_FILE\"`"
     INTERVAL=$intaval
+    PID_FILE=$pid_file
+    LOG_FILE=$log_file
+
+    GC_INTERVAL=20
+
 }
 
 run(){
