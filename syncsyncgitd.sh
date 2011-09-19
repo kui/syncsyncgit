@@ -233,8 +233,8 @@ sync_all(){
             then
                 if [ -n "$file" ] 
                 then
-                    local repo=$DEFAULT_REPOSITORY
-                    local branch=$DEFAULT_REPOSITORY
+                    local repo="$DEFAULT_REPOSITORY"
+                    local branch="$DEFAULT_REPOSITORY"
                     $echo "file:$file, repo:$repo, branch:$branch"
                     sync "$file" "$repo" "$branch"
                 fi
