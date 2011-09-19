@@ -259,13 +259,13 @@ sync(){
     repository="$2"
     branch="$3"
 
-    if [ -z $BRANCH ] || [ -z $REPOSITORY ]
+    if [ -z $branch ] || [ -z $repository ]
     then
-        $echo "error: set $BRANCH and $REPOSITORY" >&2
+        $echo "error: set $branch and $repository" >&2
         exit 1
     fi
 
-    git pull --ff --quiet "$REPOSITORY" "$BRANCH" 2>&1
+    git pull --ff --quiet "$repository" "$branch" 2>&1
     git add . 2>&1
     local dry_run=`commit --porcelain 2>&1`
     if [ -n "$dry_run" ]
