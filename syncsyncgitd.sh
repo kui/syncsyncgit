@@ -257,6 +257,8 @@ sync_all(){
 sync(){
 
     cd "$1"
+    if [ -z "$repository" ]
+        then local repository="$DEFAULT_REPOSITORY"
     repository="$2"
     branch="$3"
 
