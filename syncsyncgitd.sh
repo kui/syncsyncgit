@@ -255,7 +255,9 @@ sync_all(){
 
 sync(){
 
-    cd $1
+    cd "$1"
+    repository="$2"
+    branch="$3"
 
     if [ -z $BRANCH ] || [ -z $REPOSITORY ]
     then
