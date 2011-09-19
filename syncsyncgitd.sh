@@ -237,6 +237,7 @@ sync_all(){
                     #local branch="$DEFAULT_REPOSITORY"
                     #$echo "file:$file, repo:$repo, branch:$branch"
                 fi
+                [ -n "$file" ] && sync "$file" "$repo" "$branch"
                 unset repo branch
                 local file="$line"
             else
