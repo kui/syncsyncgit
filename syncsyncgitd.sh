@@ -258,9 +258,13 @@ sync(){
 
     cd "$1"
     if [ -z "$repository" ]
-        then local repository="$DEFAULT_REPOSITORY"
-    repository="$2"
-    branch="$3"
+    then local repository="$DEFAULT_REPOSITORY"
+    else local repository="$2"
+    fi
+    if [ -z "$branch" ]
+    then local branch="$DEFAULT_BRANCH"
+    else local branch="$2"
+    fi
 
     if [ -z $branch ] || [ -z $repository ]
     then
