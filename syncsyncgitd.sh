@@ -273,7 +273,7 @@ sync(){
 	$echo "$dry_run"
 	commit --quiet
     fi
-    git push --quiet "$REPOSITORY" "$BRANCH" 2>&1 |\
+    git push --quiet "$repository" "$branch" 2>&1 |\
       grep -v "^Everything up-to-date$"
 }
 
