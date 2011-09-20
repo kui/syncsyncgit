@@ -100,7 +100,7 @@ run(){
 }
 
 stop(){
-    local pid=`get_pid`
+    local pid="`get_pid`"
     local retry_count=30
 
     if ! exist_pid $pid
@@ -156,7 +156,7 @@ is_git_dir(){
 }
 
 logger(){
-    local datetime=`date +'%F %T'`
+    local datetime="`date +'%F %T'`"
     sed -e "s/^/$datetime /" >> "$LOG_FILE"
 }
 
@@ -228,8 +228,8 @@ to_be_or_not_to_be(){
 }
 
 check_dir(){
-    local file=$1
-    local dir=`dirname "$file"`
+    local file="$1"
+    local dir="`dirname "$file"`"
     if ! [ -d "$dir" ]
     then
 	local cmd="mkdir -p \"$dir\""
@@ -248,7 +248,7 @@ sync(){
 
     git pull --ff --quiet "$REPOSITORY" "$BRANCH" 2>&1
     git add . 2>&1
-    local dry_run=`commit --porcelain 2>&1`
+    local dry_run="`commit --porcelain 2>&1`"
     if [ -n "$dry_run" ]
     then
 	$echo "$dry_run"
