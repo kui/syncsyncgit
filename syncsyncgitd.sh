@@ -62,8 +62,8 @@ read_setting_file(){
         TARGET_LIST_FILES=("${TARGET_LIST_FILES[@]}" "$file")
     done
     
-    for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE LOG_FILE\
-                 GC_INTERVAL
+    for param in INTERVAL DEFAULT_REPOSITORY DEFAULT_BRANCH PID_FILE\
+                 LOG_FILE GC_INTERVAL
     do
         eval $echo '$param:	$'"$param"
     done
